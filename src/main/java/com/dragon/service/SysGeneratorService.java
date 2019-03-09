@@ -1,10 +1,12 @@
 package com.dragon.service;
 
 import com.dragon.dao.GeneratorDao;
+import com.dragon.utils.GenUtils;
 import com.dragon.utils.PageUtils;
 import com.dragon.utils.Query;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,9 +48,10 @@ public class SysGeneratorService {
             // 查询列信息
             List<Map<String, String>> columns = queryColumns(tableName);
             // 生成代码
-            GenUtils.
+            GenUtils.generatorCode(table, columns, zip);
         }
-
+        IOUtils.closeQuietly(zip);
+        return outputStream.toByteArray();
     }
 
 }
