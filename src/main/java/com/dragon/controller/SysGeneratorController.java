@@ -47,7 +47,7 @@ public class SysGeneratorController {
         byte[] data = sysGeneratorService.generatorCode(tables.split(","));
 
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"dragon-generator.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"lbd-account.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 
